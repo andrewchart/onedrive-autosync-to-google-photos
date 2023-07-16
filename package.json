@@ -1,0 +1,23 @@
+{
+  "name": "onedrive-autosync-to-google-photos",
+  "version": "1.0.0",
+  "description": "Scripts that will pick up photos from OneDrive and copy them to Google Photos. My use case for this is to display my personal photos on Google Chromecast's ambient mode without maintaining my photos in multiple accounts.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "onedrive",
+    "google photos",
+    "photos",
+    "sync"
+  ],
+  "author": "Andrew Chart <achart@hotmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2"
+  }
+}

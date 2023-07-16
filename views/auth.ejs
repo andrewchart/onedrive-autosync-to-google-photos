@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Authorize OneDrive and Google Photos</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+      }
+
+      body {
+        max-width: 800px;
+        line-height: 150%;
+      }
+
+      h1,
+      h2,
+      p,
+      button {
+        padding: 0.5em 12px;
+      }
+
+      h2 {
+        margin-top: 2em;
+      }
+
+      button {
+        margin: 12px 0 0 12px;
+        background-color: #2b75ff;
+        color: #fff;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Authorise OneDrive and Google Photos</h1>
+    <p>
+      Use this page to give this application access to the OneDrive and Google Photos accounts which
+      you want to connect together.
+    </p>
+    <p>You can authorise a single account of each type at a time.</p>
+
+    <h2>Current Authorised OneDrive User</h2>
+    <div class="connected-account">
+      <% if (data.onedrive_user.name && data.onedrive_user.account_id) { %>
+      <p>
+        Name: <%= data.onedrive_user.name %><br />
+        Account ID: <%= data.onedrive_user.account_id %>
+      </p>
+      <% } else { %>
+      <p>No OneDrive users are currently authorised</p>
+      <% } %>
+    </div>
+
+    <a href="<%= data.onedrive_oauth_url %>">
+      <button>Sync a New OneDrive Account</button>
+    </a>
+
+    <h2>Current Authorised Google Photos User</h2>
+    <div class="connected-account">
+      <% if (data.google_photos_user.name && data.google_photos_user.account_id) { %>
+      <p>
+        Name: <%= data.google_photos_user.name %><br />
+        Account ID: <%= data.google_photos_user.account_id %>
+      </p>
+      <% } else { %>
+      <p>No Google Photos users are currently authorised</p>
+      <% } %>
+    </div>
+
+    <a href="<%= data.google_photos_oauth_url %>">
+      <button>Sync a New Google Photos Account</button>
+    </a>
+  </body>
+</html>
