@@ -1,5 +1,6 @@
 require('dotenv').config();
 
+const authViewData = require('./modules/auth-view-data.js');
 const log = require('./modules/logger.js');
 const validateApiKey = require('./modules/validate-api-key.js');
 
@@ -46,18 +47,7 @@ app.all(/^\/auth$/, async (req, res) => {
         (req.method === "POST" && req.body.apiKey && validateApiKey(req.body.apiKey)) ||
         (req.method === "GET" && req.query.apiKey && validateApiKey(req.query.apiKey))
     ) {
-        res.render('auth', { data: {
-          onedrive_user: { 
-            name: 'o', 
-            account_id: '1'
-          },
-          google_photos_user: { 
-            name: 'g', 
-            account_id: '2'
-          },
-          onedrive_oauth_url: '',
-          google_photos_oauth_url: ''
-        } });
+        res.render('auth', { data: authViewData(req) });
     }
 
     else if(
